@@ -1,2 +1,2 @@
 #!/bin/bash
-chown --reference=holberton hello
+chown --reference=hello holberton
