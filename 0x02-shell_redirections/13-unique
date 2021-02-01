@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lt | cut -f11 -d' '
+uniq -u | sort
