@@ -1,2 +1,2 @@
 #!/bin/bash
-echo {a..z}{a..z} | sort | find "oo" -delete
+echo {a..z}{a..z} | tr [:space:] '\n' | sort | grep oo -delete
