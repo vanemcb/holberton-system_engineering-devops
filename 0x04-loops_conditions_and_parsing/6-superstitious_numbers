@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Script that displays numbers from 1 to 20
+n=1
+while (( n <= 20 ))
+do
+	case $n in
+	5) echo "bad luck from China"
+	;;
+	10) echo "bad luck from Japan"
+	;;
+	18) echo "bad luck from Italy"
+	;;
+	esac
+	((n++))
+	echo "$n"
+done
