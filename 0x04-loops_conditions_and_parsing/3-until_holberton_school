@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Script that displays Holberton School 10 times
+n=1
+until [ $n -gt 10 ]
+do
+	echo "Holberton School"
+	((n++))
+done
