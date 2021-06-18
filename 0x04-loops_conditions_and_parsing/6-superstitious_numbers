@@ -11,6 +11,6 @@ do
 	18) echo "bad luck from Italy"
 	;;
 	esac
-	((n++))
 	echo "$n"
+	((n++))
 done
