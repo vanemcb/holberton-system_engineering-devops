@@ -2,9 +2,9 @@
 # script that gives you information about
 # the holbertonschool file
 FILE=holbertonschool
-if test -f "$FILE" || test -d "$FILE"
+if [ -e "$FILE" ]
 then
-    echo "$FILE file exist"
+    echo "$FILE file exists"
 	if [ -s "$FILE" ]
 	then
 		echo "$FILE file is not empty"
