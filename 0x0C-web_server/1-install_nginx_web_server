@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Script that install nginx in a new Ubuntu machine
+
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install nginx
+servive ngninx start
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
