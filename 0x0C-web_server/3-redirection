@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Script that install nginx in a new Ubuntu machine with a redirection
+
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install nginx
+service nginx start
+chmod 777 /var/www/html/index.nginx-debian.html
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+sed -i '/server_name _;/ a \\trewrite ^/$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-enabled/default
