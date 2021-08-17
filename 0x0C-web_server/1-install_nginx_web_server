@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Script that install nginx in a new Ubuntu machine
 
-apt-get -y update
-apt-get -y upgrade
-apt-get -y install nginx
-servive ngninx start
-echo "Holberton School" > usr/share/nginx/html/index.html
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install nginx
+sudo servive ngninx start
+sudo echo "Holberton School" > usr/share/nginx/html/index.html
