@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 # Script that configures Nginx so that its HTTP response contains a custom header
 
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install nginx
+service nginx start
+chmod o+w /var/www/html/index.nginx-debian.html
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+chmod o+w /etc/nginx/sites-enabled/default
+sed -i '/server_name _;/ a \\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-enabled/default
+chmod o+w /usr/share/nginx/html/
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
+sed -i '/server_name _;/ a \\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t\t}' /etc/nginx/sites-enabled/default
 host=$(hostname)
 sed -i "/server_name _;/ a \\\tadd_header X-Served-By $host;" /etc/nginx/sites-enabled/default
 service nginx restart
