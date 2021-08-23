@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script that configures Nginx so that its HTTP response contains a custom header
+
+host=$(hostname)
+sed -i "/server_name _;/ a \\\tadd_header X-Served-By $host;" /etc/nginx/sites-enabled/default
+service nginx restart
