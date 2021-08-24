@@ -10,7 +10,7 @@ exec { 'upgrade':
 }
 package {'nginx':
   ensure  => installed,
-  require => [Exec['update'], Exec['upgrade']],
+  require => Exec['update'],
 }
 file_line {'redirect':
   ensure  => 'present',
