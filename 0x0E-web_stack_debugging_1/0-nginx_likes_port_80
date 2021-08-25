@@ -2,5 +2,5 @@
 # Script that listens on port 80 of all the server’s active IPv4 IPs
 
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sed -i 's/ ipv6only=on//g' /etc/nginx/sites-enabled/default
+sed -i 's/ ipv6only=on//g' /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
 service nginx restart
