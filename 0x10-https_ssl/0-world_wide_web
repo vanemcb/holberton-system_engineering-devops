@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Bash script domain and subdomains
+
+record () {
+	rec=$(dig  "$url" | grep -A1 'ANSWER SECTION:' | tail -n1| awk '{print $4}')
+	ip=$(dig  "$url" | grep -A1 'ANSWER SECTION:' | tail -n1| awk '{print $5}')
+}
+
+print () {
+	echo "The subdomain $sub is a $rec record and points to $ip"
+}
+
+if (("$#" == 2))
+then
+	url="$2.$1"
+	sub="$2"
+	record
+	print
+else
+	url="www.$1"
+	sub="www"
+	record
+	print
+	url="lb-01.$1"
+	sub="lb-01"
+	record
+	print
+	url="web-01.$1"
+	sub="web-01"
+	record
+	print
+	url="web-02.$1"
+	sub="web-02"
+	record
+	print
+fi
