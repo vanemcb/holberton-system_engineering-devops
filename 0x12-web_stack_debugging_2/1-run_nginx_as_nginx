@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
 # Bash script that configures the container to run nginx as user nginx
+pkill -9 apache2
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+chmod ugo+wr /etc/nginx/nginx.conf
+sed -i '1s/.*/user nginx;/' /etc/nginx/nginx.conf
+sudo -u nginx nginx
