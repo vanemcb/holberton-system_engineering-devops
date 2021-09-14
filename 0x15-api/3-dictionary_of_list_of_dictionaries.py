@@ -8,23 +8,24 @@ from sys import argv
 if __name__ == "__main__":
 
     final_dict = {}
-    for user in range(1, 11):
 
-        name = requests.get(
-            'https://jsonplaceholder.typicode.com/users/{}'.format(
-                user)).json()
+    user = requests.get(
+        'https://jsonplaceholder.typicode.com/users').json()
 
-        tasks = requests.get(
-            'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-                user)).json()
+    tasks = requests.get(
+        'https://jsonplaceholder.typicode.com/todos').json()
 
+    final_dict = {}
+    for user_dict in user:
         tasks_list = []
-        for items in tasks:
-            tasks_dict = {"task": items.get('title'), "completed": items.get(
-                "completed"), "username": name.get('username')}
-            tasks_list.append(tasks_dict)
-
-        final_dict[name.get('id')] = tasks_list
+        for task_dict in tasks:
+            if user_dict['id'] == task_dict['userId']:
+                task_dict_final = {
+                    "task": task_dict.get('title'),
+                    "completed": task_dict.get("completed"),
+                    "username": user_dict.get('username')}
+                tasks_list.append(task_dict_final)
+                final_dict[user_dict['id']] = tasks_list
 
     with open('todo_all_employees.json', 'w', encoding='UTF8') as f:
         json.dump(final_dict, f)
