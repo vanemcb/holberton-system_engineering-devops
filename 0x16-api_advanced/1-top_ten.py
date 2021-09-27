@@ -15,7 +15,7 @@ def top_ten(subreddit):
             subreddit), headers=headers).json()
 
     if data.status_code != 200:
-        return None
+        print(None)
     else:
         for index in range(0, 10):
             print(data.get('data').get(
