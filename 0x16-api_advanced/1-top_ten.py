@@ -14,5 +14,9 @@ def top_ten(subreddit):
         'http://www.reddit.com/r/{}/hot.json'.format(
             subreddit), headers=headers).json()
 
-    for index in range(0, 10):
-        print(data.get('data').get('children')[index].get('data').get('title'))
+    if data.status_code != 200:
+        return None
+    else:
+        for index in range(0, 10):
+            print(data.get('data').get(
+                'children')[index].get('data').get('title'))
