@@ -14,7 +14,7 @@ def recurse(subreddit, hot_list=[], after=""):
             subreddit, after), headers=headers)
 
     if data.status_code != 200:
-        print(None)
+        return None
     else:
         after = data.json().get('data').get('after')
         if after is not None:
