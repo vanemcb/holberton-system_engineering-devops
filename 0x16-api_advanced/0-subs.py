@@ -16,7 +16,7 @@ def number_of_subscribers(subreddit):
         'http://www.reddit.com/r/{}/about.json'.format(
             subreddit), headers=headers)
 
-    if data is None:
+    if data.status_code != 200:
         return 0
     else:
         return data.json().get('data').get('subscribers')
