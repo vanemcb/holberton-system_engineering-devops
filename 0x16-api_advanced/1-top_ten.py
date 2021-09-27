@@ -12,11 +12,11 @@ def top_ten(subreddit):
             Safari/537.36"}
     data = requests.get(
         'http://www.reddit.com/r/{}/hot.json'.format(
-            subreddit), headers=headers).json()
+            subreddit), headers=headers)
 
     if data.status_code != 200:
         print(None)
     else:
         for index in range(0, 10):
-            print(data.get('data').get(
+            print(data.json().get('data').get(
                 'children')[index].get('data').get('title'))
